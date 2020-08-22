@@ -1,29 +1,33 @@
-import { NavigationContainer } from '@react-navigation/native';
-import React from 'react';
-import { FlatList, View, Text } from 'react-native';
+import { NavigationContainer } from "@react-navigation/native";
+import React from "react";
+import { FlatList, View, Text } from "react-native";
+import { Icon } from "react-native-elements";
 
 const ListScreen = ({ navigation }) => {
   const LIST_DATA = [
     {
-      name: 'strawberries',
+      name: "strawberries",
       quantity: 1,
-      unit: 'lb',
+      unit: "lb",
     },
     {
-      name: 'rice',
+      name: "rice",
       quantity: 2,
-      unit: 'cups',
+      unit: "cups",
     },
     {
-      name: 'soy sauce',
+      name: "soy sauce",
       quantity: 3,
-      unit: 'tsp',
+      unit: "tsp",
     },
   ];
+
   const renderItem = ({ item }) => (
-    <View style={{ justifyContent: 'space-between', flexDirection: 'row', flex: 1 }}>
+    <View
+      style={{ justifyContent: "space-between", flexDirection: "row", flex: 1 }}
+    >
       <View>
-        <Text>{item.name}</Text>
+        <Text>{`\u2022 ${item.name}`}</Text>
       </View>
       <View>
         <Text>
@@ -35,7 +39,8 @@ const ListScreen = ({ navigation }) => {
   );
   return (
     <View>
-      <View style={{ borderBottomColor: 'black', borderBottomWidth: 1 }}></View>
+      <Icon name="list" onPress={() => navigation.navigate("HomeScreen")} />
+      <View style={{ borderBottomColor: "black", borderBottomWidth: 1 }}></View>
       <FlatList data={LIST_DATA} renderItem={renderItem} />
     </View>
   );
