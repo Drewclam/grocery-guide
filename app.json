@@ -1,0 +1,12 @@
+{
+  "name": "grocery-guide",
+  "displayName": "grocery-guide",
+  "expo": {
+    "name": "grocery-guide",
+    "slug": "grocery-guide",
+    "version": "1.0.0",
+    "assetBundlePatterns": [
+      "**/*"
+    ]
+  }
+}
