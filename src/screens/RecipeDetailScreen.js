@@ -24,7 +24,7 @@ const RecipeDetailScreen = ({ navigation }) => {
   const RecipeDetailRenderItem = ({ item }) => (
     <View>
       <TextInput
-        style={{ backgroundColor: 'red' }}
+        style={styles.ingredient}
         value={item.name}
         multiline={true}
         blurOnSubmit={true}
@@ -97,6 +97,10 @@ const styles = StyleSheet.create({
   },
   recipe: {
     fontSize: fontSize.regular,
+  },
+  ingredient: {
+    fontSize: fontSize.regular,
+    paddingVertical: spacing.small,
   },
 });
 
