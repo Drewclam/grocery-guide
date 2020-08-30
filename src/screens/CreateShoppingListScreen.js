@@ -5,7 +5,7 @@ import { Button } from 'react-native-elements';
 import { spacing, fontSize } from '../utils/styles';
 import CheckListItem from '../components/CheckListItem';
 
-const CreateShoppingList = ({ navigation }) => {
+const CreateShoppingListScreen = ({ navigation }) => {
   const [recipes, setRecipes] = useState([{
     id: 1,
     name: 'Stew',
@@ -54,4 +54,4 @@ const styles = StyleSheet.create({
   }
 });
 
-export default CreateShoppingList;
+export default CreateShoppingListScreen;

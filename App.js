@@ -5,9 +5,9 @@ import { createBottomTabNavigator } from 'react-navigation-tabs';
 import { createAppContainer } from 'react-navigation';
 
 import RecipesScreen from './src/screens/RecipesScreen';
-import RecipeDetail from './src/screens/RecipeDetail';
+import RecipeDetailScreen from './src/screens/RecipeDetailScreen';
 import ShoppingListScreen from './src/screens/ShoppingListScreen';
-import CreateShoppingList from './src/screens/CreateShoppingList';
+import CreateShoppingListScreen from './src/screens/CreateShoppingListScreen';
 
 export default function App() {
   const routes = {
@@ -28,8 +28,8 @@ export default function App() {
   );
 
   const appNavigator = createStackNavigator(
-    {[routes.home]: { screen: tabStack }},
-    {headerMode: 'none'}
+    { [routes.home]: { screen: tabStack } },
+    { headerMode: 'none' },
   );
 
   const appStack = createStackNavigator(
@@ -37,10 +37,10 @@ export default function App() {
       [routes.app]: {
         screen: appNavigator,
       },
-      [routes.recipeDetail]: { screen: RecipeDetail, params: { isModal: true } },
-      [routes.createShoppingList]: { screen: CreateShoppingList, params: { isModal: true } },
+      [routes.recipeDetail]: { screen: RecipeDetailScreen, params: { isModal: true } },
+      [routes.createShoppingList]: { screen: CreateShoppingListScreen, params: { isModal: true } },
     },
-    {headerMode: 'none'}
+    { headerMode: 'none' },
   );
   const AppContainer = createAppContainer(appStack);
 
