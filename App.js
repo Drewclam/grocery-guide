@@ -8,10 +8,8 @@ import RecipesScreen from './src/screens/RecipesScreen';
 import RecipeDetailScreen from './src/screens/RecipeDetailScreen';
 import ShoppingListScreen from './src/screens/ShoppingListScreen';
 import CreateShoppingListScreen from './src/screens/CreateShoppingListScreen';
-import { init } from './src/utils/database';
 
 export default function App() {
-  init();
   const routes = {
     app: 'app',
     recipes: 'recipes',
