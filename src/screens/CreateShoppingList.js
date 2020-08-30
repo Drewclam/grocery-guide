@@ -1,9 +1,9 @@
 import React from 'react';
-import { View, Text } from 'react-native';
+import { SafeAreaView, Text } from 'react-native';
 import { Button } from 'react-native-elements';
 const CreateShoppingList = ({ navigation }) => (
-  <View>
+  <SafeAreaView>
     <Text>Create shopping list screen</Text>
-  </View>
+  </SafeAreaView>
 );
 export default CreateShoppingList;
