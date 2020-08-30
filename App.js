@@ -1,42 +1,52 @@
-import "react-native-gesture-handler";
-import { StatusBar } from "expo-status-bar";
-import React from "react";
-import { StyleSheet, Text, View } from "react-native";
-import { createStackNavigator } from "@react-navigation/stack";
-import { NavigationContainer } from "@react-navigation/native";
-import { Button } from "react-native";
+import 'react-native-gesture-handler';
+import React from 'react';
+import { StyleSheet } from 'react-native';
+import { createStackNavigator } from 'react-navigation-stack';
+import { createBottomTabNavigator } from 'react-navigation-tabs';
+import { createAppContainer } from 'react-navigation';
 
-import ListScreen from "./src/components/ListScreen";
-import SelectedRecipes from "./src/components/SelectedRecipes";
-
-const Stack = createStackNavigator();
-
-const HomeScreen = ({ navigation }) => {
-  return (
-    <Button
-      title="Go to Jane's profile"
-      onPress={() => navigation.navigate("Profile", { name: "Jane" })}
-    />
-  );
-};
+import RecipesScreen from './src/components/RecipesScreen';
+import RecipeDetail from './src/components/RecipeDetail';
+import ShoppingListScreen from './src/components/ShoppingListScreen';
+import CreateShoppingList from './src/components/CreateShoppingList';
 
 export default function App() {
-  return (
-    <NavigationContainer>
-      <Stack.Navigator>
-        <Stack.Screen name="SelectedRecipes" component={SelectedRecipes} />
-        <Stack.Screen name="LIST_NAME" component={ListScreen} />
-        <Stack.Screen name="HomeScreen" component={HomeScreen} />
-      </Stack.Navigator>
-    </NavigationContainer>
+  const routes = {
+    app: 'app',
+    recipes: 'recipes',
+    shoppingList: 'shoppingList',
+    recipeDetail: 'recipeDetail',
+    home: 'home',
+    createShoppingList: 'createShoppingList',
+  };
+
+  const tabStack = createBottomTabNavigator(
+    {
+      [routes.recipes]: { screen: RecipesScreen },
+      [routes.shoppingList]: { screen: ShoppingListScreen },
+    },
+    { initialRouteName: routes.shoppingList },
   );
+  const appNavigator = createStackNavigator({
+    [routes.home]: { screen: tabStack },
+  });
+  const appStack = createStackNavigator({
+    [routes.app]: {
+      screen: appNavigator,
+    },
+    [routes.recipeDetail]: { screen: RecipeDetail, params: { isModal: true } },
+    [routes.createShoppingList]: { screen: CreateShoppingList, params: { isModal: true } },
+  });
+  const AppContainer = createAppContainer(appStack);
+
+  return <AppContainer />;
 }
 
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: "#fff",
-    alignItems: "center",
-    justifyContent: "center",
+    backgroundColor: '#fff',
+    alignItems: 'center',
+    justifyContent: 'center',
   },
 });
