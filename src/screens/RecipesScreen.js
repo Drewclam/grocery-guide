@@ -1,20 +1,21 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { SafeAreaView, Text, StyleSheet, TouchableOpacity, FlatList } from 'react-native';
 import { Button } from 'react-native-elements';
 
 import { spacing, fontSize, defaultTouchOpacity } from '../utils/styles';
+import { getAllRecipes } from '../utils/database';
 
 const RecipesScreen = ({ navigation }) => {
-  const [recipes, setRecipes] = useState([
-    {
-      id: 1,
-      name: 'Stew',
-      ingredients: [
-        { id: 0, name: 'ingredient 1', quantity: 2 },
-        { id: 1, name: 'ingredient 2', quantity: 5 },
-      ],
-    },
-  ]);
+  const [recipes, setRecipes] = useState([]);
+  const loadRecipes = async () => {
+    const recipes = await getAllRecipes();
+    setRecipes(recipes);
+  };
+
+  useEffect(() => {
+    loadRecipes();
+  });
+
   return (
     <SafeAreaView style={styles.container}>
       <Text style={styles.title}>Recipes</Text>
