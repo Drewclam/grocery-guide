@@ -27,7 +27,7 @@ const styles = StyleSheet.create({
     flex: 1,
     paddingLeft: spacing.large,
     fontSize: fontSize.large,
-  }
+  },
 });
 
 export default CheckListItem;
